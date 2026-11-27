@@ -1,684 +1,519 @@
 
-// import { useState } from 'react'
-// import './App.css'
+import { useState } from "react";
+import "./App.css";
 
-// function App() {
-//   const [menuOpen, setMenuOpen] = useState(false)
+const education = [
+  {
+    title: "B.Tech in Computer Science & Engineering",
+    institute: "Parul University",
+    location: "Vadodara, Gujarat, India",
+    duration: "July 2024 – Present",
+    result: "Currently Studying",
+  },
+  {
+    title: "Diploma in Engineering",
+    institute: "Magura Polytechnic Institute",
+    location: "Magura, Bangladesh",
+    duration: "January 2018 – December 2022",
+    result: "CGPA: 4.46 / 5.00",
+  },
+];
 
-//   const email = 'ghoshutshob470@gmail.com'
+const certificates = [
+  {
+    title: "AWS Fundamentals",
+    institute: "Amazon Web Services",
+    duration: "June 2026 – August 2026",
+    image: "/images/certificates/aws-fundamentals.jpg",
+  },
+  {
+    title: "Complete Web Development Course",
+    institute: "Programming Hero",
+    duration: "August 2025 – February 2026",
+    image: "/images/certificates/web-development.jpg",
+  },
+];
 
-//   const whatsapp =
-//     'https://wa.me/917430974244?text=Hello%20Utshab%2C%20I%20visited%20your%20portfolio.%20I%20would%20like%20to%20connect%20with%20you.'
+const skills = [
+  "HTML5",
+  "CSS3",
+  "JavaScript",
+  "React.js",
+  "Java",
+  "Bootstrap",
+  "Tailwind CSS",
+  "Responsive Web Design",
+  "Flexbox",
+  "CSS Grid",
+];
 
-//   const navLinks = [
-//     { name: 'Home', href: '#home' },
-//     { name: 'About', href: '#about' },
-//     { name: 'Skills', href: '#skills' },
-//     { name: 'Projects', href: '#projects' },
-//     { name: 'Contact', href: '#contact' },
-//   ]
-
-//   const skills = [
-//     'HTML5', 'CSS3', 'JavaScript', 'React',
-//     'Tailwind CSS', 'Bootstrap', 'Node.js Basics',
-//     'Express.js Basics', 'Python Basics', 'Git & GitHub',
-//   ]
-
-//   return (
-//     <>
-//       {/* NAVBAR */}
-//       <nav className="navbar">
-//         <a href="#home" className="logo">
-//           UTSHAB<span>.</span>
-//         </a>
-
-//         <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
-//           {navLinks.map((link) => (
-//             <a
-//               key={link.name}
-//               href={link.href}
-//               onClick={() => setMenuOpen(false)}
-//             >
-//               {link.name}
-//             </a>
-//           ))}
-//         </div>
-
-//         <div className="nav-actions">
-//           <a href="/resume.pdf" download="Utshab_Kumar_Ghosh_Resume.pdf"
-//             className="nav-resume">
-//             Download CV ↓
-//           </a>
-//           <a href={`mailto:${email}`} className="nav-button">
-//             Let's Talk ↗
-//           </a>
-//         </div>
-
-//         <button
-//           className="menu-button"
-//           onClick={() => setMenuOpen(!menuOpen)}
-//           aria-label="Toggle navigation"
-//         >
-//           {menuOpen ? '✕' : '☰'}
-//         </button>
-//       </nav>
-
-//       {/* HERO */}
-//       <section className="hero-section" id="home">
-//         <div className="hero-container">
-//           <div className="hero-content">
-//             <div className="availability">
-//               <span className="status-dot"></span>
-//               Available for Opportunities
-//             </div>
-
-//             <p className="hero-intro">HELLO, I'M</p>
-
-//             <h1>
-//               Utshab Kumar
-//               <span>Ghosh.</span>
-//             </h1>
-
-//             <h2>
-//               Aspiring Full Stack <span>Developer</span>
-//             </h2>
-
-//             <p className="hero-description">
-//               I'm a B.Tech Computer Science student at Parul University,
-//               passionate about building modern, responsive and
-//               user-friendly web applications.
-//             </p>
-
-//             <div className="hero-buttons">
-//               <a href="#projects" className="primary-button">
-//                 Explore My Work ↗
-//               </a>
-
-//               <a href={`mailto:${email}`} className="secondary-button">
-//                 Contact Me ✉
-//               </a>
-
-//               <a
-//                 href="/resume.pdf"
-//                 download="Utshab_Kumar_Ghosh_Resume.pdf"
-//                 className="resume-button"
-//               >
-//                 Download Resume ↓
-//               </a>
-//             </div>
-
-//             <div className="social-links">
-//               <a href="https://github.com/coder-utshab"
-//                 target="_blank" rel="noreferrer">
-//                 GH
-//               </a>
-
-//               <a href={`mailto:${email}`} aria-label="Email">
-//                 @
-//               </a>
-
-//               <a href={whatsapp}
-//                 target="_blank" rel="noreferrer"
-//                 aria-label="WhatsApp">
-//                 WA
-//               </a>
-//             </div>
-//           </div>
-
-//           <div className="hero-image-container">
-//             <div className="image-glow"></div>
-
-//             <div className="profile-image">
-//               <img
-//                 src="/images/profile.png"
-//                 alt="Utshab Kumar Ghosh"
-//               />
-//             </div>
-
-//             <div className="floating-card">
-//               <span>💻</span>
-//               <div>
-//                 <strong>Web Developer</strong>
-//                 <small>Building Digital Experiences</small>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-
-//         <div className="hero-bottom">
-//           <span>SCROLL TO EXPLORE</span>
-//           <div className="scroll-line"></div>
-//         </div>
-//       </section>
-
-//       {/* ABOUT */}
-//       <section id="about" className="about-section">
-//         <p className="section-label">GET TO KNOW ME</p>
-//         <h2>About <span>Me</span></h2>
-
-//         <p>
-//           I am a Computer Science Engineering student at Parul University.
-//           I enjoy learning web development and creating practical digital
-//           experiences using modern technologies.
-//         </p>
-
-//         <a href="/resume.pdf" download="Utshab_Kumar_Ghosh_Resume.pdf"
-//           className="primary-button">
-//           View My Resume ↓
-//         </a>
-//       </section>
-
-//       {/* SKILLS */}
-//       <section id="skills" className="skills-section">
-//         <p className="section-label">WHAT I WORK WITH</p>
-//         <h2>My <span>Skills</span></h2>
-
-//         <div className="skills-list">
-//           {skills.map((skill) => (
-//             <div className="skill-item" key={skill}>
-//               {skill}
-//             </div>
-//           ))}
-//         </div>
-//       </section>
-
-//       {/* PROJECTS */}
-//       <section id="projects" className="projects-section">
-//         <p className="section-label">MY RECENT WORK</p>
-//         <h2>Featured <span>Projects</span></h2>
-
-//         <p>
-//           Explore my web development projects and practical work.
-//           More projects are available on my GitHub profile.
-//         </p>
-
-//         <a
-//           href="https://github.com/coder-utshab"
-//           target="_blank"
-//           rel="noreferrer"
-//           className="primary-button"
-//         >
-//           Visit My GitHub ↗
-//         </a>
-//       </section>
-
-//       {/* CONTACT */}
-//       <section id="contact" className="contact-section">
-//         <p className="section-label">LET'S CONNECT</p>
-//         <h2>Have a Project in <span>Mind?</span></h2>
-
-//         <p>
-//           Interested in working together or discussing an opportunity?
-//           Feel free to reach out.
-//         </p>
-
-//         <div className="contact-actions">
-//           <a href={`mailto:${email}`} className="contact-card">
-//             <span>✉</span>
-//             <strong>Email Me</strong>
-//             <small>{email}</small>
-//           </a>
-
-//           <a href={whatsapp}
-//             target="_blank" rel="noreferrer"
-//             className="contact-card">
-//             <span>💬</span>
-//             <strong>WhatsApp Me</strong>
-//             <small>Send a direct message</small>
-//           </a>
-
-//           <a
-//             href="https://github.com/coder-utshab"
-//             target="_blank"
-//             rel="noreferrer"
-//             className="contact-card"
-//           >
-//             <span>GH</span>
-//             <strong>GitHub</strong>
-//             <small>Explore my code</small>
-//           </a>
-//         </div>
-//       </section>
-
-//       {/* FOOTER */}
-//       <footer className="footer">
-//         <div className="footer-top">
-//           <div className="footer-brand">
-//             <a href="#home" className="logo">
-//               UTSHAB<span>.</span>
-//             </a>
-//             <p>
-//               Building modern web experiences with creativity
-//               and passion.
-//             </p>
-//           </div>
-
-//           <div className="footer-links">
-//             <h3>Quick Links</h3>
-//             <a href="#home">Home</a>
-//             <a href="#about">About</a>
-//             <a href="#skills">Skills</a>
-//             <a href="#projects">Projects</a>
-//             <a href="#contact">Contact</a>
-//           </div>
-
-//           <div className="footer-links">
-//             <h3>Connect With Me</h3>
-//             <a href={`mailto:${email}`}>Email</a>
-//             <a href={whatsapp} target="_blank" rel="noreferrer">
-//               WhatsApp
-//             </a>
-//             <a href="https://github.com/coder-utshab"
-//               target="_blank" rel="noreferrer">
-//               GitHub
-//             </a>
-//           </div>
-
-//           <div className="footer-resume">
-//             <h3>My Resume</h3>
-//             <p>Want to know more about my experience?</p>
-//             <a
-//               href="/resume.pdf"
-//               download="Utshab_Kumar_Ghosh_Resume.pdf"
-//               className="footer-download"
-//             >
-//               Download CV ↓
-//             </a>
-//           </div>
-//         </div>
-
-//         <div className="footer-bottom">
-//           <p>© 2026 Utshab Kumar Ghosh. All Rights Reserved.</p>
-//           <a href="#home">Back to Top ↑</a>
-//         </div>
-//       </footer>
-//     </>
-//   )
-// }
-
-// export default App
-
-
-
-
-import { useState } from 'react'
-import './App.css'
+const projects = [
+  {
+    number: "01",
+    title: "Memorable Water Bottle",
+    description:
+      "A React application built to explore and manage memorable water bottles.",
+    tech: "React.js",
+    link: "https://github.com/coder-utshab/react-memorable-water-bottle",
+  },
+  {
+    number: "02",
+    title: "Phone Hunter API",
+    description:
+      "A phone information application using JavaScript and API integration.",
+    tech: "JavaScript • API",
+    link: "https://github.com/coder-utshab/phone-hunter-api",
+  },
+  {
+    number: "03",
+    title: "Smart Ticketing",
+    description:
+      "A web development project focused on ticketing functionality.",
+    tech: "Web Development",
+    link: "https://github.com/coder-utshab/smart-tickiting",
+  },
+  {
+    number: "04",
+    title: "Knowledge Cafe",
+    description:
+      "A React project for exploring and displaying knowledge articles.",
+    tech: "React • Tailwind CSS",
+    link: "https://github.com/coder-utshab/cd-react-knowledge-cafe-code-.-react",
+  },
+];
 
 function App() {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [activeTab, setActiveTab] = useState("education");
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  // Your contact details
-  const email = 'ghoshutshob470@gmail.com'
-
-  // Gmail compose link
-  const emailLink =
-    'https://mail.google.com/mail/?view=cm&fs=1' +
-    '&to=' + encodeURIComponent(email) +
-    '&su=' + encodeURIComponent('Portfolio Contact - Utshab Kumar Ghosh') +
-    '&body=' + encodeURIComponent(
-      'Hello Utshab,\n\nI visited your portfolio and would like to connect with you.\n\nMessage:\n\nThank you.'
-    )
-
-  // WhatsApp message link
-  const whatsapp =
-    'https://wa.me/917430974244?text=' +
-    encodeURIComponent(
-      'Hello Utshab, I visited your portfolio and would like to connect with you.'
-    )
-
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
-  ]
-
-  const skills = [
-    'HTML5',
-    'CSS3',
-    'JavaScript',
-    'React',
-    'Tailwind CSS',
-    'Bootstrap',
-    'Node.js Basics',
-    'Express.js Basics',
-    'Python Basics',
-    'Git & GitHub',
-    'SQL',
-    'Responsive Web Design',
-  ]
+  const closeMenu = () => setMenuOpen(false);
 
   return (
-    <>
+    <div className="portfolio">
+
       {/* NAVBAR */}
-      <nav className="navbar">
-        <a href="#home" className="logo">
-          UTSHAB<span>.</span>
+      <header className="navbar">
+        <a href="#home" className="logo" onClick={closeMenu}>
+          Utshab<span>.</span>
         </a>
 
-        <div className={`nav-links ${menuOpen ? 'active' : ''}`}>
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.name}
-            </a>
-          ))}
-        </div>
-
-        <div className="nav-actions">
-          <a
-            href="/resume.pdf"
-            download="Utshab_Kumar_Ghosh_Resume.pdf"
-            className="nav-resume"
-          >
-            Download CV ↓
-          </a>
-
-          <a
-            href={emailLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="nav-button"
-          >
-            Let's Talk ↗
-          </a>
-        </div>
-
         <button
-          className="menu-button"
+          className="menu-toggle"
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle navigation"
+          aria-label="Toggle menu"
         >
-          {menuOpen ? '✕' : '☰'}
+          {menuOpen ? "✕" : "☰"}
         </button>
-      </nav>
 
-      {/* HERO */}
-      <section className="hero-section" id="home">
-        <div className="hero-container">
-          <div className="hero-content">
-            <div className="availability">
+        <nav className={`nav-links ${menuOpen ? "show-menu" : ""}`}>
+          <a href="#home" onClick={closeMenu}>Home</a>
+          <a href="#about" onClick={closeMenu}>About</a>
+          <a href="#journey" onClick={closeMenu}>Education</a>
+          <a href="#skills" onClick={closeMenu}>Skills</a>
+          <a href="#projects" onClick={closeMenu}>Projects</a>
+          <a href="#contact" onClick={closeMenu}>Contact</a>
+        </nav>
+
+        <a href="#contact" className="nav-contact">
+          Let's Talk <span>↗</span>
+        </a>
+      </header>
+
+      <main>
+        {/* HERO */}
+        <section className="hero section" id="home">
+          <div className="hero-content reveal">
+            <div className="available-tag">
               <span className="status-dot"></span>
-              Available for Opportunities
+              Available for opportunities
             </div>
 
             <p className="hero-intro">HELLO, I'M</p>
 
             <h1>
               Utshab Kumar
+              <br />
               <span>Ghosh.</span>
             </h1>
 
             <h2>
-              Aspiring Full Stack <span>Developer</span>
+              Computer Science Student <span>&</span> Web Developer
             </h2>
 
             <p className="hero-description">
-              I'm a B.Tech Computer Science student at Parul University,
-              passionate about building modern, responsive and
-              user-friendly web applications.
+              I build modern, responsive and user-friendly web experiences.
+              Passionate about technology, creative problem-solving and
+              continuous learning.
             </p>
 
             <div className="hero-buttons">
-              <a href="#projects" className="primary-button">
-                Explore My Work ↗
-              </a>
-
-              <a
-                href={emailLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="secondary-button"
-              >
-                Contact Me ✉
+              <a href="#projects" className="btn-primary">
+                Explore My Work <span>↗</span>
               </a>
 
               <a
                 href="/resume.pdf"
-                download="Utshab_Kumar_Ghosh_Resume.pdf"
-                className="resume-button"
+                className="btn-secondary"
+                download="Utshab_Kumar_Ghosh_CV.pdf"
               >
-                Download Resume ↓
+                <span>↓</span> Download CV
               </a>
             </div>
 
-            <div className="social-links">
+            <div className="hero-socials">
               <a
                 href="https://github.com/coder-utshab"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer"
               >
-                GH
+                GitHub ↗
               </a>
-
-              <a
-                href={emailLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                @
+              <a href="mailto:ghoshutshob470@gmail.com">
+                Email ↗
               </a>
-
               <a
-                href={whatsapp}
+                href="https://wa.me/917430974244"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer"
               >
-                WA
+                WhatsApp ↗
               </a>
             </div>
           </div>
 
-          <div className="hero-image-container">
-            <div className="image-glow"></div>
+          <div className="hero-visual reveal">
+            <div className="profile-orbit orbit-one"></div>
+            <div className="profile-orbit orbit-two"></div>
 
-            <div className="profile-image">
+            <div className="profile-circle">
               <img
                 src="/images/profile.png"
                 alt="Utshab Kumar Ghosh"
               />
             </div>
 
-            <div className="floating-card">
-              <span>💻</span>
+            <div className="profile-floating-card card-code">
+              <span>⌘</span>
               <div>
-                <strong>Web Developer</strong>
-                <small>Building Digital Experiences</small>
+                <strong>Developer</strong>
+                <small>Creative Mind</small>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className="hero-bottom">
-          <span>SCROLL TO EXPLORE</span>
-          <div className="scroll-line"></div>
-        </div>
-      </section>
-
-      {/* ABOUT */}
-      <section id="about" className="about-section">
-        <p className="section-label">GET TO KNOW ME</p>
-        <h2>
-          About <span>Me</span>
-        </h2>
-
-        <p>
-          I am a Computer Science Engineering student at Parul University.
-          I enjoy learning web development and creating practical digital
-          experiences using modern technologies.
-        </p>
-
-        <a
-          href="/resume.pdf"
-          download="Utshab_Kumar_Ghosh_Resume.pdf"
-          className="primary-button"
-        >
-          Download My Resume ↓
-        </a>
-      </section>
-
-      {/* SKILLS */}
-      <section id="skills" className="skills-section">
-        <p className="section-label">WHAT I WORK WITH</p>
-        <h2>
-          My <span>Skills</span>
-        </h2>
-
-        <div className="skills-list">
-          {skills.map((skill) => (
-            <div className="skill-item" key={skill}>
-              {skill}
+            <div className="profile-floating-card card-tech">
+              <span>✦</span>
+              <div>
+                <strong>Always Learning</strong>
+                <small>Building the Future</small>
+              </div>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* PROJECTS */}
-      <section id="projects" className="projects-section">
-        <p className="section-label">MY RECENT WORK</p>
-        <h2>
-          Featured <span>Projects</span>
-        </h2>
+            <div className="hero-decor decor-one"></div>
+            <div className="hero-decor decor-two"></div>
+          </div>
 
-        <p>
-          Explore my web development projects and practical work.
-          More projects are available on my GitHub profile.
-        </p>
-
-        <a
-          href="https://github.com/coder-utshab"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="primary-button"
-        >
-          Visit My GitHub ↗
-        </a>
-      </section>
-
-      {/* CONTACT */}
-      <section id="contact" className="contact-section">
-        <p className="section-label">LET'S CONNECT</p>
-        <h2>
-          Have a Project in <span>Mind?</span>
-        </h2>
-
-        <p>
-          Interested in working together or discussing an opportunity?
-          Feel free to reach out.
-        </p>
-
-        <div className="contact-actions">
-          <a
-            href={emailLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="contact-card"
-          >
-            <span>✉</span>
-            <strong>Email Me</strong>
-            <small>{email}</small>
+          <a href="#about" className="scroll-down">
+            <span>↓</span> Scroll to explore
           </a>
+        </section>
 
-          <a
-            href={whatsapp}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="contact-card"
-          >
-            <span>💬</span>
-            <strong>WhatsApp Me</strong>
-            <small>Send a direct message</small>
-          </a>
+        {/* ABOUT */}
+        <section className="section about-section" id="about">
+          <div className="section-heading">
+            <p className="section-label">GET TO KNOW ME</p>
+            <h2>
+              A Little About <span>Myself</span>
+            </h2>
+          </div>
 
-          <a
-            href="https://github.com/coder-utshab"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="contact-card"
-          >
-            <span>GH</span>
-            <strong>GitHub</strong>
-            <small>Explore my code</small>
-          </a>
-        </div>
-      </section>
+          <div className="about-grid">
+            <div className="about-main">
+              <p className="about-lead">
+                Hi, I'm <strong>Utshab Kumar Ghosh</strong> — a Computer
+                Science & Engineering student with a passion for web
+                development and technology.
+              </p>
 
-      {/* FOOTER */}
-      <footer className="footer">
-        <div className="footer-top">
-          <div className="footer-brand">
-            <a href="#home" className="logo">
-              UTSHAB<span>.</span>
-            </a>
+              <p>
+                Currently pursuing my B.Tech at Parul University, Vadodara,
+                Gujarat. I enjoy learning modern technologies, developing
+                responsive websites and turning ideas into useful digital
+                experiences.
+              </p>
 
-            <p>
-              Building modern web experiences with creativity
-              and passion.
+              <p>
+                I believe in continuous learning, practical experience and
+                improving my skills through real-world projects.
+              </p>
+
+              <a href="#contact" className="text-link">
+                Let's work together <span>↗</span>
+              </a>
+            </div>
+
+            <div className="about-highlight">
+              <div className="highlight-symbol">✦</div>
+              <h3>Learning Today.</h3>
+              <h3 className="highlight-green">Building Tomorrow.</h3>
+              <p>
+                Focused on becoming a skilled Full Stack Developer.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* EDUCATION + CERTIFICATES */}
+        <section className="section journey-section" id="journey">
+          <div className="section-heading">
+            <p className="section-label">MY BACKGROUND</p>
+            <h2>
+              My Learning <span>Journey</span>
+            </h2>
+            <p className="section-subtitle">
+              Education, achievements and continuous learning.
             </p>
           </div>
 
-          <div className="footer-links">
-            <h3>Quick Links</h3>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
+          <div className="journey-tabs">
+            <button
+              className={activeTab === "education" ? "tab-btn active" : "tab-btn"}
+              onClick={() => setActiveTab("education")}
+            >
+              🎓 Education Journey
+            </button>
+
+            <button
+              className={activeTab === "certificates" ? "tab-btn active" : "tab-btn"}
+              onClick={() => setActiveTab("certificates")}
+            >
+              🏆 Certificates & Learning
+            </button>
           </div>
 
-          <div className="footer-links">
-            <h3>Connect With Me</h3>
+          {activeTab === "education" && (
+            <div className="education-grid">
+              {education.map((item, index) => (
+                <article className="education-card" key={index}>
+                  <div className="education-card-top">
+                    <span className="education-icon">🎓</span>
+                    <span className="education-date">{item.duration}</span>
+                  </div>
 
-            <a
-              href={emailLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Email
-            </a>
+                  <h3>{item.title}</h3>
+                  <h4>{item.institute}</h4>
+                  <p className="education-location">📍 {item.location}</p>
+                  <span className="education-result">{item.result}</span>
+                </article>
+              ))}
+            </div>
+          )}
 
-            <a
-              href={whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp
-            </a>
+          {activeTab === "certificates" && (
+            <div className="certificate-grid">
+              {certificates.map((item, index) => (
+                <article className="certificate-card" key={index}>
+                  <a
+                    href={item.image}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="certificate-image-wrap"
+                  >
+                    <img src={item.image} alt={item.title} loading="lazy" />
+                    <span className="certificate-image-overlay">
+                      View Full Certificate ↗
+                    </span>
+                  </a>
 
+                  <div className="certificate-content">
+                    <span className="certificate-tag">CERTIFICATE</span>
+                    <h3>{item.title}</h3>
+                    <h4>{item.institute}</h4>
+                    <p>{item.duration}</p>
+
+                    <a
+                      href={item.image}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="certificate-link"
+                    >
+                      View Certificate ↗
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+        </section>
+
+        {/* SKILLS */}
+        <section className="section skills-section" id="skills">
+          <div className="section-heading">
+            <p className="section-label">WHAT I WORK WITH</p>
+            <h2>
+              My Creative <span>Toolkit</span>
+            </h2>
+            <p className="section-subtitle">
+              Technologies and tools I use to bring ideas to life.
+            </p>
+          </div>
+
+          <div className="skills-grid">
+            {skills.map((skill, index) => (
+              <div className="skill-item" key={skill}>
+                <span className="skill-index">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span>{skill}</span>
+                <span className="skill-arrow">↗</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* PROJECTS */}
+        <section className="section projects-section" id="projects">
+          <div className="section-heading">
+            <p className="section-label">SELECTED WORK</p>
+            <h2>
+              Featured <span>Projects</span>
+            </h2>
+            <p className="section-subtitle">
+              A collection of projects built while learning and experimenting.
+            </p>
+          </div>
+
+          <div className="projects-grid">
+            {projects.map((project) => (
+              <article className="project-card" key={project.number}>
+                <div className="project-top">
+                  <span>{project.number}</span>
+                  <span className="project-star">✳</span>
+                </div>
+
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+
+                <div className="project-bottom">
+                  <span className="project-tech">{project.tech}</span>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Open ${project.title} on GitHub`}
+                  >
+                    ↗
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="all-projects">
             <a
               href="https://github.com/coder-utshab"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noreferrer"
+              className="btn-secondary"
             >
-              GitHub
+              Explore All GitHub Projects ↗
             </a>
           </div>
+        </section>
 
-          <div className="footer-resume">
-            <h3>My Resume</h3>
-            <p>Want to know more about my experience?</p>
+        {/* CONTACT */}
+        <section className="section contact-section" id="contact">
+          <div className="contact-box">
+            <p className="section-label">HAVE A PROJECT IN MIND?</p>
+            <h2>
+              Let's Create Something <span>Great.</span>
+            </h2>
+            <p>
+              I'm always open to discussing new projects, creative ideas
+              and opportunities.
+            </p>
 
             <a
-              href="/resume.pdf"
-              download="Utshab_Kumar_Ghosh_Resume.pdf"
-              className="footer-download"
+              href="mailto:ghoshutshob470@gmail.com"
+              className="btn-primary"
             >
-              Download CV ↓
+              Get In Touch <span>↗</span>
             </a>
-          </div>
-        </div>
 
-        <div className="footer-bottom">
-          <p>© 2026 Utshab Kumar Ghosh. All Rights Reserved.</p>
-          <a href="#home">Back to Top ↑</a>
+            <div className="contact-details">
+              <a href="mailto:ghoshutshob470@gmail.com">
+                ghoshutshob470@gmail.com
+              </a>
+              <a href="tel:+917430974244">+91 7430974244</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+   <footer className="footer">
+  <div className="footer-container">
+    <div className="footer-top">
+      <div className="footer-brand">
+        <a href="#home" className="footer-logo">
+          UTSHAB<span>.</span>
+        </a>
+
+        <p>
+          Building digital experiences with creativity,
+          passion, and clean code.
+        </p>
+
+        <div className="footer-socials">
+          <a
+            href="https://github.com/coder-utshab"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub ↗
+          </a>
+
+          <a href="mailto:ghoshutshob470@gmail.com">
+            Email ↗
+          </a>
+
+          <a
+            href="https://wa.me/917430974244"
+            target="_blank"
+            rel="noreferrer"
+          >
+            WhatsApp ↗
+          </a>
         </div>
-      </footer>
-    </>
-  )
+      </div>
+
+      <div className="footer-links">
+        <h3>Quick Links</h3>
+        <a href="#home">Home</a>
+        <a href="#about">About Me</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div className="footer-contact">
+        <h3>Let's Connect</h3>
+        <p>Have a project in mind?</p>
+        <a href="mailto:ghoshutshob470@gmail.com" className="footer-email">
+          Let's work together ↗
+        </a>
+      </div>
+    </div>
+
+    <div className="footer-bottom">
+      <p>© {new Date().getFullYear()} Utshab Kumar Ghosh. All rights reserved.</p>
+
+      <a href="#home" className="back-to-top">
+        Back to Top ↑
+      </a>
+    </div>
+  </div>
+</footer>
+    </div>
+  );
 }
 
-export default App
+export default App;
