@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import "./App.css";
 
@@ -21,16 +20,18 @@ const education = [
 
 const certificates = [
   {
-    title: "AWS Fundamentals",
-    institute: "Amazon Web Services",
-    duration: "June 2026 – August 2026",
-    image: "/images/certificates/aws-fundamentals.jpg",
+    title: "AI Fundamentals: Foundations for Understanding AI",
+    institute: "Cisco Networking Academy in collaboration with IBM SkillsBuild",
+    duration: "Issued: September 29, 2026",
+    image: "/certificates/Screenshot%202026-11-28%20234020.png",
+    type: "AI & Technology",
   },
   {
-    title: "Complete Web Development Course",
-    institute: "Programming Hero",
-    duration: "August 2025 – February 2026",
-    image: "/images/certificates/web-development.jpg",
+    title: "Certificate of Achievement",
+    institute: "Certificate document",
+    duration: "View certificate for details",
+    image: "/certificates/1786459414887.jpg",
+    type: "Professional Learning",
   },
 ];
 
@@ -85,25 +86,17 @@ const projects = [
 function App() {
   const [activeTab, setActiveTab] = useState("education");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedCertificate, setSelectedCertificate] = useState(null);
 
   const closeMenu = () => setMenuOpen(false);
 
   return (
     <div className="portfolio">
-
       {/* NAVBAR */}
       <header className="navbar">
-        <a href="#home" className="logo" onClick={closeMenu}>
+        <a className="logo" href="#home" onClick={closeMenu}>
           Utshab<span>.</span>
         </a>
-
-        <button
-          className="menu-toggle"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? "✕" : "☰"}
-        </button>
 
         <nav className={`nav-links ${menuOpen ? "show-menu" : ""}`}>
           <a href="#home" onClick={closeMenu}>Home</a>
@@ -111,109 +104,96 @@ function App() {
           <a href="#journey" onClick={closeMenu}>Education</a>
           <a href="#skills" onClick={closeMenu}>Skills</a>
           <a href="#projects" onClick={closeMenu}>Projects</a>
-          <a href="#contact" onClick={closeMenu}>Contact</a>
         </nav>
 
-        <a href="#contact" className="nav-contact">
-          Let's Talk <span>↗</span>
+        <a className="nav-contact" href="#contact">
+          Let&apos;s Talk <span>↗</span>
         </a>
+
+        <button
+          className="menu-toggle"
+          type="button"
+          aria-label="Toggle navigation menu"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          {menuOpen ? "✕" : "☰"}
+        </button>
       </header>
 
       <main>
         {/* HERO */}
         <section className="hero section" id="home">
-          <div className="hero-content reveal">
+          <div className="hero-content">
             <div className="available-tag">
-              <span className="status-dot"></span>
-              Available for opportunities
+              <span className="status-dot" />
+              Open to learning & opportunities
             </div>
 
-            <p className="hero-intro">HELLO, I'M</p>
-
+            <p className="hero-intro">HELLO, I&apos;M</p>
             <h1>
               Utshab Kumar
               <br />
               <span>Ghosh.</span>
             </h1>
-
             <h2>
-              Computer Science Student <span>&</span> Web Developer
+              B.Tech CSE Student <span>|</span> Aspiring Full Stack Developer
             </h2>
-
             <p className="hero-description">
-              I build modern, responsive and user-friendly web experiences.
-              Passionate about technology, creative problem-solving and
-              continuous learning.
+              I&apos;m a Computer Science student at Parul University,
+              passionate about building clean, responsive and user-friendly
+              web experiences. I enjoy learning new technologies and turning
+              ideas into practical projects.
             </p>
 
             <div className="hero-buttons">
-              <a href="#projects" className="btn-primary">
-                Explore My Work <span>↗</span>
+              <a className="btn-primary" href="/resume.pdf" download>
+                Download CV <span>↓</span>
               </a>
-
-              <a
-                href="/resume.pdf"
-                className="btn-secondary"
-                download="Utshab_Kumar_Ghosh_CV.pdf"
-              >
-                <span>↓</span> Download CV
+              <a className="btn-secondary" href="#projects">
+                Explore Projects <span>↗</span>
               </a>
             </div>
 
             <div className="hero-socials">
-              <a
-                href="https://github.com/coder-utshab"
-                target="_blank"
-                rel="noreferrer"
-              >
-                GitHub ↗
-              </a>
-              <a href="mailto:ghoshutshob470@gmail.com">
-                Email ↗
-              </a>
-              <a
-                href="https://wa.me/917430974244"
-                target="_blank"
-                rel="noreferrer"
-              >
-                WhatsApp ↗
-              </a>
+              <a href="https://github.com/coder-utshab" target="_blank" rel="noreferrer">GitHub ↗</a>
+              <a href="mailto:ghoshutshob470@gmail.com">Email ↗</a>
+              <a href="https://wa.me/917430974244" target="_blank" rel="noreferrer">WhatsApp ↗</a>
             </div>
           </div>
 
-          <div className="hero-visual reveal">
-            <div className="profile-orbit orbit-one"></div>
-            <div className="profile-orbit orbit-two"></div>
-
+          <div className="hero-visual" aria-label="Profile image">
+            <div className="profile-orbit orbit-one" />
+            <div className="profile-orbit orbit-two" />
             <div className="profile-circle">
               <img
                 src="/images/profile.png"
                 alt="Utshab Kumar Ghosh"
+                onError={(event) => {
+                  event.currentTarget.style.display = "none";
+                }}
               />
             </div>
-
             <div className="profile-floating-card card-code">
               <span>⌘</span>
               <div>
-                <strong>Developer</strong>
-                <small>Creative Mind</small>
+                <strong>Clean Code</strong>
+                <small>Building with care</small>
               </div>
             </div>
-
             <div className="profile-floating-card card-tech">
               <span>✦</span>
               <div>
-                <strong>Always Learning</strong>
-                <small>Building the Future</small>
+                <strong>Web Developer</strong>
+                <small>Always learning</small>
               </div>
             </div>
-
-            <div className="hero-decor decor-one"></div>
-            <div className="hero-decor decor-two"></div>
+            <span className="hero-decor decor-one" />
+            <span className="hero-decor decor-two" />
           </div>
 
-          <a href="#about" className="scroll-down">
-            <span>↓</span> Scroll to explore
+          <a className="scroll-down" href="#about">
+            SCROLL TO EXPLORE <span>↓</span>
           </a>
         </section>
 
@@ -221,123 +201,115 @@ function App() {
         <section className="section about-section" id="about">
           <div className="section-heading">
             <p className="section-label">GET TO KNOW ME</p>
-            <h2>
-              A Little About <span>Myself</span>
-            </h2>
+            <h2>About <span>Me</span></h2>
+            <p className="section-subtitle">
+              A little introduction about my journey and what I enjoy doing.
+            </p>
           </div>
 
           <div className="about-grid">
             <div className="about-main">
               <p className="about-lead">
-                Hi, I'm <strong>Utshab Kumar Ghosh</strong> — a Computer
-                Science & Engineering student with a passion for web
-                development and technology.
+                Hello! I&apos;m <strong>Utshab Kumar Ghosh</strong>, a Computer
+                Science & Engineering student who loves technology and web
+                development.
               </p>
-
               <p>
-                Currently pursuing my B.Tech at Parul University, Vadodara,
-                Gujarat. I enjoy learning modern technologies, developing
-                responsive websites and turning ideas into useful digital
-                experiences.
+                I am currently pursuing my B.Tech at Parul University,
+                Vadodara. My learning journey includes front-end development,
+                programming fundamentals and building practical projects.
               </p>
-
               <p>
-                I believe in continuous learning, practical experience and
-                improving my skills through real-world projects.
+                I believe in continuous learning, problem solving and writing
+                simple, useful code. My goal is to grow as a developer and
+                contribute to meaningful software projects.
               </p>
-
-              <a href="#contact" className="text-link">
-                Let's work together <span>↗</span>
+              <a className="text-link" href="https://github.com/coder-utshab" target="_blank" rel="noreferrer">
+                Explore my GitHub <span>↗</span>
               </a>
             </div>
 
             <div className="about-highlight">
-              <div className="highlight-symbol">✦</div>
+              <div className="highlight-symbol">✳</div>
               <h3>Learning Today.</h3>
               <h3 className="highlight-green">Building Tomorrow.</h3>
               <p>
-                Focused on becoming a skilled Full Stack Developer.
+                Focused on strengthening my development skills through
+                hands-on practice, projects and continuous improvement.
               </p>
             </div>
           </div>
         </section>
 
-        {/* EDUCATION + CERTIFICATES */}
+        {/* EDUCATION & CERTIFICATES */}
         <section className="section journey-section" id="journey">
           <div className="section-heading">
             <p className="section-label">MY BACKGROUND</p>
-            <h2>
-              My Learning <span>Journey</span>
-            </h2>
+            <h2>My <span>Journey</span></h2>
             <p className="section-subtitle">
-              Education, achievements and continuous learning.
+              Education and certificates that are part of my learning journey.
             </p>
           </div>
 
           <div className="journey-tabs">
             <button
-              className={activeTab === "education" ? "tab-btn active" : "tab-btn"}
+              className={`tab-btn ${activeTab === "education" ? "active" : ""}`}
               onClick={() => setActiveTab("education")}
+              type="button"
             >
-              🎓 Education Journey
+              Education
             </button>
-
             <button
-              className={activeTab === "certificates" ? "tab-btn active" : "tab-btn"}
+              className={`tab-btn ${activeTab === "certificates" ? "active" : ""}`}
               onClick={() => setActiveTab("certificates")}
+              type="button"
             >
-              🏆 Certificates & Learning
+              Certificates &amp; Learning
             </button>
           </div>
 
-          {activeTab === "education" && (
+          {activeTab === "education" ? (
             <div className="education-grid">
-              {education.map((item, index) => (
-                <article className="education-card" key={index}>
+              {education.map((item) => (
+                <article className="education-card" key={item.title}>
                   <div className="education-card-top">
                     <span className="education-icon">🎓</span>
                     <span className="education-date">{item.duration}</span>
                   </div>
-
                   <h3>{item.title}</h3>
                   <h4>{item.institute}</h4>
-                  <p className="education-location">📍 {item.location}</p>
+                  <p className="education-location">{item.location}</p>
                   <span className="education-result">{item.result}</span>
                 </article>
               ))}
             </div>
-          )}
-
-          {activeTab === "certificates" && (
+          ) : (
             <div className="certificate-grid">
-              {certificates.map((item, index) => (
-                <article className="certificate-card" key={index}>
-                  <a
-                    href={item.image}
-                    target="_blank"
-                    rel="noreferrer"
+              {certificates.map((certificate) => (
+                <article className="certificate-card" key={certificate.title}>
+                  <button
                     className="certificate-image-wrap"
+                    type="button"
+                    onClick={() => setSelectedCertificate(certificate)}
+                    aria-label={`View ${certificate.title}`}
+                    style={{ width: "100%", padding: 0, border: 0, cursor: "pointer" }}
                   >
-                    <img src={item.image} alt={item.title} loading="lazy" />
-                    <span className="certificate-image-overlay">
-                      View Full Certificate ↗
-                    </span>
-                  </a>
-
+                    <img src={certificate.image} alt={certificate.title} />
+                    <span className="certificate-image-overlay">View Certificate ↗</span>
+                  </button>
                   <div className="certificate-content">
-                    <span className="certificate-tag">CERTIFICATE</span>
-                    <h3>{item.title}</h3>
-                    <h4>{item.institute}</h4>
-                    <p>{item.duration}</p>
-
-                    <a
-                      href={item.image}
-                      target="_blank"
-                      rel="noreferrer"
+                    <span className="certificate-tag">{certificate.type}</span>
+                    <h3>{certificate.title}</h3>
+                    <h4>{certificate.institute}</h4>
+                    <p>{certificate.duration}</p>
+                    <button
                       className="certificate-link"
+                      type="button"
+                      onClick={() => setSelectedCertificate(certificate)}
+                      style={{ background: "none", border: 0, padding: 0, cursor: "pointer" }}
                     >
-                      View Certificate ↗
-                    </a>
+                      View certificate ↗
+                    </button>
                   </div>
                 </article>
               ))}
@@ -349,20 +321,16 @@ function App() {
         <section className="section skills-section" id="skills">
           <div className="section-heading">
             <p className="section-label">WHAT I WORK WITH</p>
-            <h2>
-              My Creative <span>Toolkit</span>
-            </h2>
+            <h2>My <span>Skills</span></h2>
             <p className="section-subtitle">
-              Technologies and tools I use to bring ideas to life.
+              Technologies and tools I&apos;m learning and using in my projects.
             </p>
           </div>
 
           <div className="skills-grid">
             {skills.map((skill, index) => (
               <div className="skill-item" key={skill}>
-                <span className="skill-index">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+                <span className="skill-index">{String(index + 1).padStart(2, "0")}</span>
                 <span>{skill}</span>
                 <span className="skill-arrow">↗</span>
               </div>
@@ -374,11 +342,9 @@ function App() {
         <section className="section projects-section" id="projects">
           <div className="section-heading">
             <p className="section-label">SELECTED WORK</p>
-            <h2>
-              Featured <span>Projects</span>
-            </h2>
+            <h2>Featured <span>Projects</span></h2>
             <p className="section-subtitle">
-              A collection of projects built while learning and experimenting.
+              A few projects from my development and learning journey.
             </p>
           </div>
 
@@ -386,36 +352,22 @@ function App() {
             {projects.map((project) => (
               <article className="project-card" key={project.number}>
                 <div className="project-top">
-                  <span>{project.number}</span>
+                  <span>{project.number} / PROJECT</span>
                   <span className="project-star">✳</span>
                 </div>
-
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
-
                 <div className="project-bottom">
                   <span className="project-tech">{project.tech}</span>
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`Open ${project.title} on GitHub`}
-                  >
-                    ↗
-                  </a>
+                  <a href={project.link} target="_blank" rel="noreferrer" aria-label={`Open ${project.title} on GitHub`}>↗</a>
                 </div>
               </article>
             ))}
           </div>
 
           <div className="all-projects">
-            <a
-              href="https://github.com/coder-utshab"
-              target="_blank"
-              rel="noreferrer"
-              className="btn-secondary"
-            >
-              Explore All GitHub Projects ↗
+            <a className="btn-secondary" href="https://github.com/coder-utshab" target="_blank" rel="noreferrer">
+              More on GitHub <span>↗</span>
             </a>
           </div>
         </section>
@@ -423,95 +375,132 @@ function App() {
         {/* CONTACT */}
         <section className="section contact-section" id="contact">
           <div className="contact-box">
-            <p className="section-label">HAVE A PROJECT IN MIND?</p>
-            <h2>
-              Let's Create Something <span>Great.</span>
-            </h2>
+            <p className="section-label">GET IN TOUCH</p>
+            <h2>Have a project in <span>mind?</span></h2>
             <p>
-              I'm always open to discussing new projects, creative ideas
-              and opportunities.
+              I&apos;m always interested in learning, collaborating and
+              discussing new opportunities. Feel free to reach out.
             </p>
-
-            <a
-              href="mailto:ghoshutshob470@gmail.com"
-              className="btn-primary"
-            >
-              Get In Touch <span>↗</span>
+            <a className="btn-primary" href="mailto:ghoshutshob470@gmail.com">
+              Say Hello <span>↗</span>
             </a>
-
             <div className="contact-details">
-              <a href="mailto:ghoshutshob470@gmail.com">
-                ghoshutshob470@gmail.com
-              </a>
+              <a href="mailto:ghoshutshob470@gmail.com">ghoshutshob470@gmail.com</a>
               <a href="tel:+917430974244">+91 7430974244</a>
+              <a href="https://wa.me/917430974244" target="_blank" rel="noreferrer">WhatsApp</a>
             </div>
           </div>
         </section>
       </main>
 
-   <footer className="footer">
-  <div className="footer-container">
-    <div className="footer-top">
-      <div className="footer-brand">
-        <a href="#home" className="footer-logo">
-          UTSHAB<span>.</span>
-        </a>
+      {/* FOOTER */}
+      <footer className="footer">
+        <div className="footer-container">
+          <div className="footer-top">
+            <div className="footer-brand">
+              <a className="footer-logo" href="#home">Utshab<span>.</span></a>
+              <p>
+                Computer Science student passionate about web development,
+                technology and continuous learning.
+              </p>
+              <div className="footer-socials">
+                <a href="https://github.com/coder-utshab" target="_blank" rel="noreferrer">GitHub</a>
+                <a href="mailto:ghoshutshob470@gmail.com">Email</a>
+                <a href="https://wa.me/917430974244" target="_blank" rel="noreferrer">WhatsApp</a>
+              </div>
+            </div>
 
-        <p>
-          Building digital experiences with creativity,
-          passion, and clean code.
-        </p>
+            <div className="footer-links">
+              <h3>Quick Links</h3>
+              <a href="#home">Home</a>
+              <a href="#about">About</a>
+              <a href="#journey">Education</a>
+              <a href="#skills">Skills</a>
+              <a href="#projects">Projects</a>
+            </div>
 
-        <div className="footer-socials">
-          <a
-            href="https://github.com/coder-utshab"
-            target="_blank"
-            rel="noreferrer"
-          >
-            GitHub ↗
-          </a>
+            <div className="footer-contact">
+              <h3>Contact</h3>
+              <p>Let&apos;s connect and build something useful.</p>
+              <a className="footer-email" href="mailto:ghoshutshob470@gmail.com">
+                ghoshutshob470@gmail.com
+              </a>
+            </div>
+          </div>
 
-          <a href="mailto:ghoshutshob470@gmail.com">
-            Email ↗
-          </a>
-
-          <a
-            href="https://wa.me/917430974244"
-            target="_blank"
-            rel="noreferrer"
-          >
-            WhatsApp ↗
-          </a>
+          <div className="footer-bottom">
+            <p>© {new Date().getFullYear()} Utshab Kumar Ghosh. All rights reserved.</p>
+            <a className="back-to-top" href="#home">Back to top ↑</a>
+          </div>
         </div>
-      </div>
+      </footer>
 
-      <div className="footer-links">
-        <h3>Quick Links</h3>
-        <a href="#home">Home</a>
-        <a href="#about">About Me</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </div>
-
-      <div className="footer-contact">
-        <h3>Let's Connect</h3>
-        <p>Have a project in mind?</p>
-        <a href="mailto:ghoshutshob470@gmail.com" className="footer-email">
-          Let's work together ↗
-        </a>
-      </div>
-    </div>
-
-    <div className="footer-bottom">
-      <p>© {new Date().getFullYear()} Utshab Kumar Ghosh. All rights reserved.</p>
-
-      <a href="#home" className="back-to-top">
-        Back to Top ↑
-      </a>
-    </div>
-  </div>
-</footer>
+      {/* CERTIFICATE PREVIEW */}
+      {selectedCertificate && (
+        <div
+          role="presentation"
+          onClick={() => setSelectedCertificate(null)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 2000,
+            background: "rgba(0,0,0,0.88)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "24px",
+          }}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={selectedCertificate.title}
+            onClick={(event) => event.stopPropagation()}
+            style={{
+              position: "relative",
+              width: "min(900px, 100%)",
+              maxHeight: "90vh",
+              padding: "14px",
+              borderRadius: "14px",
+              background: "#141715",
+              border: "1px solid rgba(163,230,53,0.35)",
+            }}
+          >
+            <button
+              type="button"
+              onClick={() => setSelectedCertificate(null)}
+              aria-label="Close certificate preview"
+              style={{
+                position: "absolute",
+                top: "-14px",
+                right: "-14px",
+                width: "38px",
+                height: "38px",
+                borderRadius: "50%",
+                border: 0,
+                background: "#a3e635",
+                color: "#10150b",
+                fontSize: "22px",
+                cursor: "pointer",
+              }}
+            >
+              ×
+            </button>
+            <img
+              src={selectedCertificate.image}
+              alt={selectedCertificate.title}
+              style={{
+                display: "block",
+                width: "100%",
+                maxHeight: "calc(90vh - 28px)",
+                objectFit: "contain",
+                borderRadius: "7px",
+                background: "#fff",
+              }}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
